@@ -1,0 +1,12 @@
+#app {
+  max-width: 1000px;
+}
+#subject-images {
+  position: relative;
+}
+#subject-images img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 0;
+}
