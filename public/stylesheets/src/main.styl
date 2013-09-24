@@ -27,11 +27,18 @@ a
     margin: 3em 0
     text-align: center
 
-  .prev-next button
-    @extends #standard-button
-    padding: 2px 15px
+  select
+    width: 100%
 
-  .sharing
-    a
-      font-size: 24px
-      padding: 0 3px
+  .prev-next
+    clearfix()
+
+  button
+    @extends #standard-button
+    width: 50%
+    float: left
+
+.sharing
+  a
+    font-size: 24px
+    padding: 0 3px

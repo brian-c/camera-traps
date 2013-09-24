@@ -26,6 +26,45 @@ fetch = (trap) ->
   request = $.get "#{ query }"
   request
 
+talkHref = (subject) ->
+  "http://talk.snapshotserengeti.org/#/subjects/#{subject.subject_id}"
+
+facebookHref = (subject) ->
+  title = 'Snapshot Serengeti'
+  summary = 'Here\'s an image from my camera trap'
+  image = $("<a href='#{subject.locations[0]}'></a>").get(0).href
+  """
+    https://www.facebook.com/sharer/sharer.php
+    ?s=100
+    &p[url]=#{ encodeURIComponent talkHref arguments... }
+    &p[title]=#{ encodeURIComponent title }
+    &p[summary]=#{ encodeURIComponent summary }
+    &p[images][0]=#{image}
+  """.replace /\n/g, ''
+
+twitterHref = (subject) ->
+  message = "An image from my @snapserengeti camera trap: #{ talkHref arguments... }"
+  "http://twitter.com/home?status=#{ encodeURIComponent message} "
+
+pinterestHref = (subject) ->
+  image = $("<a href='#{subject.locations[0]}'></a>").get(0).href
+  summary = 'An image from my Snapshot Serengeti camera trap'
+  """
+    http://pinterest.com/pin/create/button/
+    ?url=#{ encodeURIComponent talkHref arguments... }
+    &media=#{ encodeURIComponent image }
+    &description=#{ encodeURIComponent summary }
+  """.replace /\n/g, ''
+
+# NOTE: This should work. It does not. I do not know why.
+tumblrHref = (subject) ->
+  """
+    http://www.tumblr.com/share/photo
+    &source=#{ encodeURIComponent subject.locations[0] }
+    &caption=#{ encodeURIComponent 'An image from my Snapshot Serengeti camera trap' }
+    &clickthru=#{ encodeURIComponent talkHref arguments... }
+  """.replace /\n/g, ''
+
 renderSubject = (subject) ->
   $('#captured_at').html "Captured at: #{ moment(subject.captured_at).format('MMMM Do YYYY, h:mm:ss a') }"
   $('#subject-images').html ""
@@ -38,6 +77,11 @@ renderSubject = (subject) ->
     $('#switch-image').append "<button value=\"#{ i }\">#{ i + 1 }</button>"
 
   $('#subject-images').children().first().css 'z-index', 1
+
+  $('#twitter-link').attr 'href', "#{ twitterHref subject }"
+  $('#facebook-link').attr 'href', "#{ facebookHref subject }"
+  $('#pinterest-link').attr 'href', "#{ pinterestHref subject }"
+  $('#tumblr-link').attr 'href', "#{ tumblrHref subject }"
 
 renderSubjectList = (subjects) ->
   for subject, i in subjects

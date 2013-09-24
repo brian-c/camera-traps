@@ -15,7 +15,7 @@ html body > nav:before {
 .subject-viewer .controls .finished button,
 .subject-viewer .followup .group a,
 .subject-viewer .followup .group button,
-.introduction .prev-next button {
+.introduction button {
   background: #2b2e27;
   border: 1px solid #140b03;
   border-color: rgba(20,11,3,0.5);
@@ -38,7 +38,7 @@ html body > nav:before {
 .subject-viewer .controls .finished button:hover,
 .subject-viewer .followup .group a:hover,
 .subject-viewer .followup .group button:hover,
-.introduction .prev-next button:hover {
+.introduction button:hover {
   border-color: #140b03;
 }
 #standard-button:active,
@@ -47,7 +47,7 @@ html body > nav:before {
 .subject-viewer .controls .finished button:active,
 .subject-viewer .followup .group a:active,
 .subject-viewer .followup .group button:active,
-.introduction .prev-next button:active {
+.introduction button:active {
   box-shadow: 0 1px 0 rgba(20,11,3,0.25) inset;
   opacity: 0.75;
 }
@@ -57,14 +57,14 @@ html body > nav:before {
 .subject-viewer .controls .finished button:disabled,
 .subject-viewer .followup .group a:disabled,
 .subject-viewer .followup .group button:disabled,
-.introduction .prev-next button:disabled,
+.introduction button:disabled,
 #standard-button.disabled,
 .home-page .introduction .action a.disabled,
 .subject-viewer .controls .play button.disabled,
 .subject-viewer .controls .finished button.disabled,
 .subject-viewer .followup .group a.disabled,
 .subject-viewer .followup .group button.disabled,
-.introduction .prev-next button.disabled {
+.introduction button.disabled {
   opacity: 0.5;
 }
 #standard-toggle,
@@ -788,10 +788,14 @@ a {
   margin: 3em 0;
   text-align: center;
 }
-.introduction .prev-next button {
-  padding: 2px 15px;
+.introduction select {
+  width: 100%;
 }
-.introduction .sharing a {
+.introduction button {
+  width: 50%;
+  float: left;
+}
+.sharing a {
   font-size: 24px;
   padding: 0 3px;
 }
