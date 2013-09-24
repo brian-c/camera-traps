@@ -773,6 +773,9 @@ html body .main hr {
 html {
   background-image: url("//www.snapshotserengeti.org/images/big-wood.jpg");
 }
+a {
+  text-decoration: none;
+}
 .subject-viewer .images figure {
   opacity: 1;
   position: relative;
@@ -782,9 +785,13 @@ html {
   font-weight: bold;
 }
 .introduction .controls {
-  margin-top: 2em;
+  margin: 3em 0;
   text-align: center;
 }
 .introduction .prev-next button {
   padding: 2px 15px;
+}
+.introduction .sharing a {
+  font-size: 24px;
+  padding: 0 3px;
 }
