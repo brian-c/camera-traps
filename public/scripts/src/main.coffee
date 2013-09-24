@@ -17,7 +17,7 @@ fetch = (trap) ->
   baseUrl = "https://the-zooniverse.cartodb.com/api/v2/sql?q="
 
   # Set base query
-  query = "#{ baseUrl }select * from serengeti where site='#{ trap }' order by captured_at limit 3"
+  query = "#{ baseUrl }select * from serengeti where site='#{ trap }' order by captured_at"
 
   # Encode query appropriately
   query = encodeURI(query)

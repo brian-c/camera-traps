@@ -21,7 +21,7 @@
   fetch = function(trap) {
     var baseUrl, query, request;
     baseUrl = "https://the-zooniverse.cartodb.com/api/v2/sql?q=";
-    query = "" + baseUrl + "select * from serengeti where site='" + trap + "' order by captured_at limit 3";
+    query = "" + baseUrl + "select * from serengeti where site='" + trap + "' order by captured_at";
     query = encodeURI(query);
     query = query.replace(/\+/g, '%2B');
     request = $.get("" + query);
