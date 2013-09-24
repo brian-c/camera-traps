@@ -1,32 +1,51 @@
 <html>
-<head>
-  <title>Camera Trap Viewer</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="/stylesheets/main.css">
-</head>
+  <head>
+    <title>Camera Trap Viewer</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+  </head>
 
-<body>
-  <div id="app">
+  <body>
+    <h1><a href="/"><img src="//www.snapshotserengeti.org/images/wordmark.png" alt="Snapshot Serengeti"></a></h1>
 
-    <div id="navigation">
-      <button name="previous">Previous</button>
-      <button name="next">Next</button>
+    <div class="main">
+      <div id="app" class="active home-page">
+        <div class="subject-viewer">
+          <div class="images">
+            <figure>
+              <div id="subject-images"></div>
+            </figure>
+          </div>
 
-      <select id="subject-list"></select>
+          <div id="subject-metadata" class="controls">
+            <span id="switch-image" class="toggles"></span>
+            <span id="captured_at"></span>
+          </div>
+        </div>
+
+        <div id="navigation" class="introduction">
+          <h1>Thank you for your support, <span id="donor-name">&mdash;</span>!</h1>
+
+          <hr />
+
+          <p>We can't thank you enough for your support. These shots are only here because of you, so check them out and share them with everyone you know!</p>
+
+          <div class="controls">
+            <p>
+              <select id="subject-list"></select>
+            </p>
+
+            <p class="prev-next">
+              <button name="previous">Previous</button>
+              <button name="next">Next</button>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div id="subject-images"></div>
-
-    <div id="subject-metadata">
-      <div id="captured_at"></div>
-      <div id="switch-image"></div>
-    </div>
-
-  </div>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/vendor/moment.js"></script>
-  <script src="/scripts/main.js"></script>
-</body>
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/vendor/moment.js"></script>
+    <script src="/scripts/main.js"></script>
+  </body>
 </html>

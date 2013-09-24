@@ -1,4 +1,5 @@
-#paper-stripe:before {
+#paper-stripe:before,
+html body > nav:before {
   border: 1px solid #dcdcdc;
   border-width: 1px 0;
   content: " ";
@@ -9,7 +10,12 @@
   width: 100%;
 }
 #standard-button,
-.home-page .introduction .action a {
+.home-page .introduction .action a,
+.subject-viewer .controls .play button,
+.subject-viewer .controls .finished button,
+.subject-viewer .followup .group a,
+.subject-viewer .followup .group button,
+.introduction .prev-next button {
   background: #2b2e27;
   border: 1px solid #140b03;
   border-color: rgba(20,11,3,0.5);
@@ -27,22 +33,44 @@
   vertical-align: middle;
 }
 #standard-button:hover,
-.home-page .introduction .action a:hover {
+.home-page .introduction .action a:hover,
+.subject-viewer .controls .play button:hover,
+.subject-viewer .controls .finished button:hover,
+.subject-viewer .followup .group a:hover,
+.subject-viewer .followup .group button:hover,
+.introduction .prev-next button:hover {
   border-color: #140b03;
 }
 #standard-button:active,
-.home-page .introduction .action a:active {
+.home-page .introduction .action a:active,
+.subject-viewer .controls .play button:active,
+.subject-viewer .controls .finished button:active,
+.subject-viewer .followup .group a:active,
+.subject-viewer .followup .group button:active,
+.introduction .prev-next button:active {
   box-shadow: 0 1px 0 rgba(20,11,3,0.25) inset;
   opacity: 0.75;
 }
 #standard-button:disabled,
 .home-page .introduction .action a:disabled,
+.subject-viewer .controls .play button:disabled,
+.subject-viewer .controls .finished button:disabled,
+.subject-viewer .followup .group a:disabled,
+.subject-viewer .followup .group button:disabled,
+.introduction .prev-next button:disabled,
 #standard-button.disabled,
-.home-page .introduction .action a.disabled {
+.home-page .introduction .action a.disabled,
+.subject-viewer .controls .play button.disabled,
+.subject-viewer .controls .finished button.disabled,
+.subject-viewer .followup .group a.disabled,
+.subject-viewer .followup .group button.disabled,
+.introduction .prev-next button.disabled {
   opacity: 0.5;
 }
 #standard-toggle,
-.home-page .recents .toggles button[name="toggle"] {
+.home-page .recents .toggles button[name="toggle"],
+.subject-viewer .controls button[name="toggle"],
+.subject-viewer .toggles button {
   color: transparent;
   height: 20px;
   position: relative;
@@ -50,7 +78,9 @@
   width: 20px;
 }
 #standard-toggle:before,
-.home-page .recents .toggles button[name="toggle"]:before {
+.home-page .recents .toggles button[name="toggle"]:before,
+.subject-viewer .controls button[name="toggle"]:before,
+.subject-viewer .toggles button:before {
   background: rgba(20,11,3,0.5);
   border-radius: 50%;
   box-shadow: 0 1px 0 rgba(20,11,3,0.5) inset, 0 1px 0 rgba(249,248,243,0.5);
@@ -64,7 +94,9 @@
   width: 10px;
 }
 #standard-toggle.active:after,
-.home-page .recents .toggles button[name="toggle"].active:after {
+.home-page .recents .toggles button[name="toggle"].active:after,
+.subject-viewer .controls button[name="toggle"].active:after,
+.subject-viewer .toggles button.active:after {
   background: rgba(249,248,243,0.5);
   border-radius: 50%;
   box-shadow: 0 1px 0 #f9f8f3 inset;
@@ -76,6 +108,135 @@
   position: absolute;
   top: 50%;
   width: 6px;
+}
+button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  box-sizing: content-box;
+  display: inline-block;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  text-align: inherit;
+  text-shadow: inherit;
+  vertical-align: baseline;
+  width: auto;
+}
+button::-moz-focus-inner {
+  border: 0;
+  outline: 1px dotted #000;
+  padding: 0;
+}
+button:focus {
+  outline: 1px dotted;
+}
+button:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+html {
+  background: url("./images/big-wood.jpg") fixed center top;
+  background-size: cover;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  min-height: 100%;
+  overflow-y: scroll;
+}
+html body {
+  margin: 0;
+  height: 100%;
+  padding: 0 0 100px;
+  position: relative;
+}
+html body > h1 {
+  color: #f9f8f3;
+  font: normal 30px Georgia, serif;
+  letter-spacing: 10px;
+  margin: 30px 0;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 2px 3px #140b03;
+  text-transform: uppercase;
+  z-index: 1;
+}
+html body > h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+html body > h1 a img {
+  border: 0;
+}
+html body > nav {
+  background: #f9f8f3;
+  bottom: 0;
+  box-shadow: 0 0 3px #140b03;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 20px 0 10px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 3;
+}
+html body > nav ul {
+  margin: 0;
+  padding: 0;
+}
+html body > nav ul li {
+  display: inline-block;
+  width: 160px;
+  border-left: 1px solid #fff;
+  box-shadow: -2px 0 0 -1px #dcdcdc;
+}
+html body > nav ul li:first-child {
+  border-left: 0;
+  box-shadow: none;
+}
+html body > nav ul li a {
+  color: inherit;
+  display: block;
+  opacity: 0.75;
+  padding: 5px 0;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+html body > nav ul li a:hover,
+html body > nav ul li a.active {
+  opacity: 1;
+}
+html body .before-load {
+  color: #f9f8f3;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 1px 1px #140b03;
+}
+html body .zooniverse-top-bar {
+  background: #f9f8f3;
+}
+html body .main {
+  z-index: 1;
+  height: 100%;
+}
+html body .main > * {
+  display: none;
+}
+html body .main > *.active {
+  display: block;
+}
+html body .main a {
+  color: inherit;
+}
+html body .main hr {
+  height: 0;
+  border: 1px solid transparent;
+  border-top-color: rgba(20,11,3,0.5);
+  border-bottom-color: rgba(249,248,243,0.25);
 }
 .home-page {
   color: #f9f8f3;
@@ -278,15 +439,352 @@
   box-shadow: 3px 5px 10px rgba(0,0,0,0.25);
   transform: rotateY(5deg);
 }
-#app {
-  max-width: 1000px;
+.subject-viewer {
+  display: inline-block;
+  float: left;
+  -webkit-tap-highlight-color: transparent;
 }
-#subject-images {
+.subject-viewer:focus {
+  outline: 0;
+}
+.subject-viewer .images {
   position: relative;
 }
-#subject-images img {
+.subject-viewer .images figure {
+  border: 5px solid #f9f8f3;
+  box-sizing: border-box;
+  height: 410px;
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
   position: absolute;
-  right: 0;
   top: 0;
-  z-index: 0;
+  width: 580px;
+}
+.subject-viewer .images figure.active {
+  box-shadow: 0 3px 5px rgba(20,11,3,0.33);
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+.subject-viewer .images figure.satellite {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.subject-viewer .images figure.satellite img {
+  width: auto;
+}
+.subject-viewer .images figure.satellite img.continent {
+  bottom: 1px;
+  box-shadow: 1px -1px 5px #140b03;
+  left: 1px;
+  height: 150px;
+  position: absolute;
+  width: 150px;
+}
+.subject-viewer .images figure.satellite .timestamp {
+  background: rgba(20,11,3,0.5);
+  color: #f9f8f3;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  text-shadow: 0 1px 1px #140b03;
+  top: 0;
+  width: 100%;
+}
+.subject-viewer .images figure img {
+  display: block;
+  width: 100%;
+}
+.subject-viewer .images .annotations {
+  color: #f9f8f3;
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  left: 10px;
+  text-shadow: 0 0 1px #140b03, 0 0 1px #140b03, 0 0 1px #140b03, 0 0 2px #140b03, 0 1px 2px #140b03;
+  top: 10px;
+  z-index: 1;
+}
+.subject-viewer .images .annotations .annotation-item {
+  transition: background 0.5s ease-in-out;
+  border-radius: 20px;
+  clear: left;
+  float: left;
+  padding: 1px 5px 1px 10px;
+}
+.subject-viewer .images .annotations .annotation-item.new {
+  background: #fc0;
+}
+.subject-viewer .images .annotations .annotation-item:hover {
+  transition: none;
+  background: rgba(20,11,3,0.75);
+}
+.subject-viewer .images .annotations .annotation-item button[name="delete"] {
+  border-radius: 50%;
+  height: 1em;
+  line-height: 1em;
+  text-align: center;
+  width: 1em;
+}
+.subject-viewer .images .extra-message {
+  background: rgba(20,11,3,0.75);
+  bottom: 5px;
+  color: #f9f8f3;
+  display: none;
+  font-size: 12px;
+  font-weight: bold;
+  left: 5px;
+  padding: 10px;
+  position: absolute;
+  right: 5px;
+  text-align: center;
+  text-shadow: 0 1px 1px #140b03;
+  z-index: 1;
+}
+.subject-viewer .images .sign-in,
+.subject-viewer .images .favorite {
+  background: #d32323;
+  color: #f9f8f3;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  transition: padding 0.25s ease-out;
+  z-index: 1;
+}
+.subject-viewer .images .sign-in > button,
+.subject-viewer .images .favorite > button {
+  position: relative;
+  z-index: 1;
+}
+.subject-viewer .images .sign-in {
+  box-shadow: 0 1px 3px rgba(20,11,3,0.5);
+  padding: 0 10px;
+  right: -3px;
+  top: 10px;
+}
+.subject-viewer .images .sign-in:hover {
+  padding-right: 15px;
+}
+.subject-viewer .images .sign-in:before,
+.subject-viewer .images .sign-in:after {
+  border: 10px solid rgba(211,35,35,0);
+  content: "";
+  position: absolute;
+  left: -10px;
+}
+.subject-viewer .images .sign-in:before {
+  border-top-color: #d32323;
+  top: 0;
+}
+.subject-viewer .images .sign-in:after {
+  border-bottom-color: #d32323;
+  bottom: 0;
+}
+.subject-viewer .images .favorite {
+  display: none;
+  font-size: 16px;
+  padding: 5px 5px 0;
+  right: 10px;
+  top: -3px;
+}
+.subject-viewer .images .favorite:hover {
+  padding-top: 10px;
+}
+.subject-viewer .images .favorite:before,
+.subject-viewer .images .favorite:after {
+  border: 15px solid transparent;
+  content: "";
+  position: absolute;
+  bottom: -15px;
+}
+.subject-viewer .images .favorite:before {
+  border-left-color: #d32323;
+  left: 0;
+}
+.subject-viewer .images .favorite:after {
+  border-right-color: #d32323;
+  right: 0;
+}
+.subject-viewer .images .favorite button[name="unfavorite"] {
+  color: #fc0;
+  display: none;
+  text-shadow: 0 1px 1px #140b03;
+}
+.subject-viewer .controls,
+.subject-viewer .followup {
+  color: #2b140a;
+  font-size: 14px;
+  margin: 15px 0 4px;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(249,248,243,0.25);
+}
+.subject-viewer .controls .play button,
+.subject-viewer .controls .finished button {
+  margin: 0 4px;
+  position: relative;
+}
+.subject-viewer .controls .play button:before,
+.subject-viewer .controls .finished button:before {
+  background: rgba(20,11,3,0.25);
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(20,11,3,0.5) inset, 0 -1px 0px rgba(249,248,243,0.25) inset;
+  content: "";
+  height: 100%;
+  left: -5px;
+  padding: 5px 5px 6px;
+  position: absolute;
+  top: -5px;
+  width: 100%;
+  z-index: -1;
+}
+.subject-viewer .controls button[name="play"] i,
+.subject-viewer .controls button[name="pause"] i {
+  position: relative;
+  top: 2px;
+}
+.subject-viewer .controls button[name="pause"] {
+  display: none;
+}
+.subject-viewer .controls .toggles {
+  margin-left: 10px;
+}
+.subject-viewer .controls .satellite {
+  margin-left: 5px;
+}
+.subject-viewer .controls button[name="satellite"] {
+  vertical-align: -2px;
+}
+.subject-viewer .controls button[name="satellite"].active {
+  color: #f9f8f3;
+  text-shadow: 0 1px 1px #140b03;
+}
+.subject-viewer .controls .finished {
+  float: right;
+}
+.subject-viewer .controls .finished .nothing-label {
+  cursor: pointer;
+  display: none;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.subject-viewer .controls .finished button {
+  width: 120px;
+}
+.subject-viewer .followup {
+  display: none;
+}
+.subject-viewer .followup button[name="not-done"] {
+  background: rgba(20,11,3,0.5);
+  border-radius: 15px;
+  color: #f9f8f3;
+  font-size: 10px;
+  margin-right: 10px;
+  padding: 0 10px;
+  text-shadow: none;
+}
+.subject-viewer .followup .group {
+  display: inline-block;
+  margin: 0 5px;
+  position: relative;
+}
+.subject-viewer .followup .group:before {
+  background: rgba(20,11,3,0.25);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(20,11,3,0.5) inset, 0 -1px 0px rgba(249,248,243,0.25) inset;
+  content: "";
+  height: 100%;
+  left: -4px;
+  padding: 4px 4px 5px;
+  position: absolute;
+  top: -4px;
+  width: 100%;
+  z-index: -1;
+}
+.subject-viewer .followup .group.continue {
+  float: right;
+}
+.subject-viewer .followup .group a,
+.subject-viewer .followup .group button {
+  padding-left: 32px;
+}
+.subject-viewer .followup .group a i,
+.subject-viewer .followup .group button i {
+  color: #140b03;
+  border-right: 1px solid rgba(20,11,3,0.5);
+  box-shadow: 2px 0 1px -1px rgba(249,248,243,0.25);
+  height: 22px;
+  left: 0;
+  line-height: 20px;
+  position: absolute;
+  top: 3px;
+  text-shadow: 0 1px 0 rgba(249,248,243,0.25);
+  width: 24px;
+}
+.subject-viewer .followup .group button[name="next"] {
+  background: #337300;
+}
+.subject-viewer .followup .group button[name="next"]:active {
+  background: #224d00;
+}
+.subject-viewer.zoomed .images figure {
+  cursor: -moz-grab;
+}
+.subject-viewer.zoomed .images figure img {
+  position: absolute;
+  width: 1200px;
+}
+.subject-viewer.dragging .images figure {
+  cursor: -moz-grabbing;
+}
+.subject-viewer.playing .controls .play button[name="play"] {
+  display: none;
+}
+.subject-viewer.playing .controls .play button[name="pause"] {
+  display: inline-block;
+}
+.subject-viewer.favorite .images .favorite button[name="favorite"] {
+  display: none;
+}
+.subject-viewer.favorite .images .favorite button[name="unfavorite"] {
+  display: inline-block;
+}
+.subject-viewer.no-annotations .controls .finished .nothing-label {
+  display: inline-block;
+}
+.subject-viewer.finished .images .extra-message {
+  display: block;
+}
+.subject-viewer.finished .controls {
+  display: none;
+}
+.subject-viewer.finished .followup {
+  display: block;
+}
+.signed-in .subject-viewer .images .sign-in {
+  display: none;
+}
+.signed-in .subject-viewer .images .favorite {
+  display: inline;
+}
+html {
+  background-image: url("//www.snapshotserengeti.org/images/big-wood.jpg");
+}
+.subject-viewer .images figure {
+  opacity: 1;
+  position: relative;
+}
+.subject-viewer .controls {
+  font-size: 12px;
+  font-weight: bold;
+}
+.introduction .controls {
+  margin-top: 2em;
+  text-align: center;
+}
+.introduction .prev-next button {
+  padding: 2px 15px;
 }

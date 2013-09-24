@@ -1,14 +1,31 @@
 @import "../../../node_modules/serengeti/css/common"
+@import "../../../node_modules/serengeti/css/button_reset"
+@import "../../../node_modules/serengeti/css/layout"
 @import "../../../node_modules/serengeti/css/home_page"
+@import "../../../node_modules/serengeti/css/subject_viewer"
 
-#app
-  max-width: 1000px
 
-#subject-images
-  position: relative
-  
-  img
-    position: absolute
-    right: 0
-    top: 0
-    z-index: 0
+html
+  background-image: url("//www.snapshotserengeti.org/images/big-wood.jpg")
+
+
+.subject-viewer
+  .images figure
+    opacity: 1
+    position: relative
+
+  .controls
+    font-size: 12px
+    font-weight: bold
+
+  .toggles button
+    @extends #standard-toggle
+
+.introduction
+  .controls
+    margin-top: 2em
+    text-align: center
+
+  .prev-next button
+    @extends #standard-button
+    padding: 2px 15px
