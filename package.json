@@ -4,7 +4,7 @@
   "devDependencies": {
     "coffee-script": "~1.6.3",
     "node-static": "~0.7.1",
-    "serengeti": "zooniverse/Serengeti",
+    "serengeti": "zooniverse/Serengeti#e680d3",
     "stylus": "~0.38.0"
   }
 }
