@@ -4,7 +4,12 @@
   "devDependencies": {
     "coffee-script": "~1.6.3",
     "node-static": "~0.7.1",
+    "publisssh": "~0.2.1",
     "serengeti": "zooniverse/Serengeti#e680d3",
     "stylus": "~0.38.0"
+  },
+  "scripts": {
+    "start": "cake watch",
+    "deploy": "publisssh ./public zooniverse-demo/camera-traps"
   }
 }
