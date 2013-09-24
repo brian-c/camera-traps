@@ -1,3 +1,283 @@
+#paper-stripe:before {
+  border: 1px solid #dcdcdc;
+  border-width: 1px 0;
+  content: " ";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+}
+#standard-button,
+.home-page .introduction .action a {
+  background: #2b2e27;
+  border: 1px solid #140b03;
+  border-color: rgba(20,11,3,0.5);
+  border-radius: 2px;
+  box-shadow: 0px 1px 0px rgba(249,248,243,0.125) inset, 0 1px 3px rgba(20,11,3,0.75);
+  box-sizing: border-box;
+  color: #dcdcdc;
+  display: inline-block;
+  font: inherit;
+  padding: 3px 8px 3px 8px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 1px #140b03;
+  vertical-align: middle;
+}
+#standard-button:hover,
+.home-page .introduction .action a:hover {
+  border-color: #140b03;
+}
+#standard-button:active,
+.home-page .introduction .action a:active {
+  box-shadow: 0 1px 0 rgba(20,11,3,0.25) inset;
+  opacity: 0.75;
+}
+#standard-button:disabled,
+.home-page .introduction .action a:disabled,
+#standard-button.disabled,
+.home-page .introduction .action a.disabled {
+  opacity: 0.5;
+}
+#standard-toggle,
+.home-page .recents .toggles button[name="toggle"] {
+  color: transparent;
+  height: 20px;
+  position: relative;
+  text-shadow: none;
+  width: 20px;
+}
+#standard-toggle:before,
+.home-page .recents .toggles button[name="toggle"]:before {
+  background: rgba(20,11,3,0.5);
+  border-radius: 50%;
+  box-shadow: 0 1px 0 rgba(20,11,3,0.5) inset, 0 1px 0 rgba(249,248,243,0.5);
+  content: ' ';
+  height: 10px;
+  left: 50%;
+  margin: -5px 0 0 -5px;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  width: 10px;
+}
+#standard-toggle.active:after,
+.home-page .recents .toggles button[name="toggle"].active:after {
+  background: rgba(249,248,243,0.5);
+  border-radius: 50%;
+  box-shadow: 0 1px 0 #f9f8f3 inset;
+  content: ' ';
+  height: 6px;
+  left: 50%;
+  margin: -3px 0 0 -3px;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  width: 6px;
+}
+.home-page {
+  color: #f9f8f3;
+  font-size: 14px;
+  margin: 0 auto;
+  text-shadow: 0 1px 1px #140b03;
+  width: 1000px;
+}
+.home-page .recents {
+  float: left;
+  position: relative;
+  text-align: center;
+  width: 600px;
+}
+.home-page .recents .images {
+  margin-bottom: 1em;
+  position: relative;
+}
+.home-page .recents .images figure {
+  background: #808080;
+  border: 5px solid #f9f8f3;
+  box-shadow: 0 2px 5px #140b03;
+  box-sizing: border-box;
+  height: 420px;
+  margin: 0;
+  overflow: hidden;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: transform 0.5s ease-out;
+  width: 600px;
+}
+.home-page .recents .images figure.active {
+  z-index: 1;
+  position: relative;
+  transform: none;
+}
+.home-page .recents .images figure.before {
+  transform: rotate(-1deg) translateX(-7px);
+}
+.home-page .recents .images figure.before + .before {
+  transform: rotate(-3deg) translateX(-10px);
+}
+.home-page .recents .images figure.after {
+  transform: rotate(4deg) translateX(7px);
+}
+.home-page .recents .images figure.after + .after {
+  transform: rotate(6deg) translateX(10px);
+}
+.home-page .recents .images figure img {
+  display: block;
+  max-width: 100%;
+}
+.home-page .introduction {
+  float: left;
+  margin: 0 50px;
+  width: 300px;
+}
+.home-page .introduction h1 {
+  font-size: 30px;
+  font-weight: normal;
+  line-height: 1;
+}
+.home-page .introduction .progress p {
+  margin: 0.25em;
+}
+.home-page .introduction .progress .season {
+  display: inline-block;
+  vertical-align: middle;
+  width: 75px;
+}
+.home-page .introduction .progress .track {
+  display: inline-block;
+  height: 6px;
+  position: relative;
+  vertical-align: middle;
+  width: 205px;
+}
+.home-page .introduction .progress .track:before {
+  background: rgba(20,11,3,0.25);
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(20,11,3,0.5) inset, 0 -1px 0px rgba(249,248,243,0.25) inset;
+  content: "";
+  height: 100%;
+  left: -2px;
+  padding: 2px 2px 3px;
+  position: absolute;
+  top: -2px;
+  width: 100%;
+  z-index: -1;
+}
+.home-page .introduction .progress .track:before {
+  border-radius: 5px;
+}
+.home-page .introduction .progress .track .fill {
+  background: #490;
+  border-radius: 5px;
+  bottom: 0;
+  box-shadow: 0 1px 1px rgba(249,248,243,0.5) inset;
+  left: 0;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  transition: width 0.5s ease-in;
+}
+.home-page .introduction .all-seasons-complete {
+  background: linear-gradient(top, #3d8a00, #490);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(20,11,3,0.33);
+  font-size: 12px;
+  margin: 0 -3px;
+  padding: 1px 15px;
+  position: relative;
+  text-shadow: none;
+}
+.home-page .introduction .action {
+  margin-top: 25px;
+}
+.home-page .introduction .action a {
+  background: #d32323;
+  padding: 5px 25px;
+}
+.home-page .introduction .action a:before {
+  background: rgba(20,11,3,0.25);
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(20,11,3,0.5) inset, 0 -1px 0px rgba(249,248,243,0.25) inset;
+  content: "";
+  height: 100%;
+  left: -5px;
+  padding: 5px 5px 6px;
+  position: absolute;
+  top: -5px;
+  width: 100%;
+  z-index: -1;
+}
+.banner {
+  font-size: 14px;
+  perspective: 500;
+  position: absolute;
+  text-align: center;
+  text-shadow: none;
+  transform: translate(-7px, 0) rotate(-5deg);
+  transform-style: preserve-3d;
+  z-index: 2;
+}
+.banner .fold {
+  background: #b31e1e;
+  bottom: -5px;
+  margin: 0 -2px;
+  position: absolute;
+  width: 25px;
+}
+.banner a {
+  background: linear-gradient(top, #d32323, #be2020);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  color: #fff;
+  display: block;
+  padding: 5px 80px 5px 50px;
+  position: relative;
+  text-decoration: none;
+  transition: box-shadow 0.25s ease-in-out, transform 0.25s ease-in-out;
+  z-index: 1;
+}
+.banner.save-snapshot-serengeti {
+  left: 0;
+  top: 0;
+}
+.banner.save-snapshot-serengeti .fold {
+  border-top-left-radius: 10px 50px;
+  height: 45px;
+  right: 100%;
+}
+.banner.save-snapshot-serengeti a {
+  border-bottom-right-radius: 10px 50px;
+  transform-origin: left center;
+}
+.lift-banner .banner.save-snapshot-serengeti a,
+.banner.save-snapshot-serengeti a:hover {
+  box-shadow: 3px 5px 10px rgba(0,0,0,0.25);
+  transform: rotateY(-5deg);
+}
+.banner.save-the-memes {
+  bottom: 60px;
+  font-size: 10px;
+  right: -15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.banner.save-the-memes .fold {
+  border-top-right-radius: 10px 50px;
+  height: 25px;
+  left: 100%;
+}
+.banner.save-the-memes a {
+  border-bottom-left-radius: 10px 50px;
+  transform-origin: right center;
+}
+.lift-banner .banner.save-the-memes a,
+.banner.save-the-memes a:hover {
+  box-shadow: 3px 5px 10px rgba(0,0,0,0.25);
+  transform: rotateY(5deg);
+}
 #app {
   max-width: 1000px;
 }
