@@ -1,3 +1,4 @@
+@import "../../../node_modules/serengeti/node_modules/nib"
 @import "../../../node_modules/serengeti/css/common"
 @import "../../../node_modules/serengeti/css/button_reset"
 @import "../../../node_modules/serengeti/css/layout"
@@ -31,12 +32,25 @@ a
     width: 100%
 
   .prev-next
-    clearfix()
+    GUTTER = 3
 
-  button
-    @extends #standard-button
-    width: 50%
-    float: left
+    clearfix()
+    margin-top: 0.5em
+
+    .gutter
+      display: inline-block
+      float: left
+      height: 0.5em
+      width: (GUTTER)%
+
+    button
+      @extends #standard-button
+      background: #ddd
+      border-color: #333
+      color: #000
+      text-shadow: 0 1px 1px #fff
+      float: left
+      width: (50 - (GUTTER / 2))%
 
 .sharing
   a
