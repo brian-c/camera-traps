@@ -47,7 +47,7 @@ a
     width: 100%
 
   .prev-next
-    GUTTER = 3
+    GUTTER = 5
 
     clearfix()
     margin-top: 0.5em
@@ -60,6 +60,7 @@ a
 
     button
       @extends #standard-button
+      outer-deboss(5px)
       float: left
       font-size: 12px
       width: (50 - (GUTTER / 2))%
