@@ -98,6 +98,7 @@
       return $('#app').html('Need to specify a trap!');
     } else {
       cameraTrap = location.hash.slice(1);
+      $('#camera-id').html(cameraTrap);
       $('#donor-name').html(DONORS[cameraTrap]);
       request = fetch(cameraTrap);
       return request.done(function(data) {
