@@ -939,6 +939,9 @@ a {
   filter: none;
   position: relative;
 }
+.subject-viewer .images figure img {
+  position: absolute;
+}
 .subject-viewer .controls {
   font-size: 12px;
   font-weight: bold;

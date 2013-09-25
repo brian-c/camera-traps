@@ -26,6 +26,10 @@ fetch = (trap) ->
   request = $.get "#{ query }"
   request
 
+showImage = (index) ->
+  $('#subject-images').children().css 'z-index', ''
+  $('#subject-images').children().eq(index).css 'z-index', 1
+
 talkHref = (subject) ->
   "http://talk.snapshotserengeti.org/#/subjects/#{subject.subject_id}"
 
@@ -74,9 +78,9 @@ renderSubject = (subject) ->
     img = new Image
     img.src = imgSrc
     $('#subject-images').append img
-    $('#switch-image').append "<button value=\"#{ i }\">#{ i + 1 }</button>"
+    $('#switch-image').append "<button name=\"select-image\" value=\"#{ i }\">#{ i + 1 }</button>"
 
-  $('#subject-images').children().first().css 'z-index', 1
+  showImage 0
 
   $('#twitter-link').attr 'href', "#{ twitterHref subject }"
   $('#facebook-link').attr 'href', "#{ facebookHref subject }"
@@ -114,8 +118,7 @@ $ ->
           renderSubject data.rows[currentSubject]
 
         $('#switch-image').click 'button', ({ target }) ->
-          $('#subject-images').children().css 'z-index', 0
-          $('#subject-images').children(":nth-child(#{ target.value })").css 'z-index', 1
+          showImage $(target).val()
 
         $('#navigation').click 'button', ({ target }) ->
           switch target.name
