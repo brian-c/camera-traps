@@ -121,6 +121,7 @@
       $('#switch-image').append("<button name=\"select-image\" value=\"" + i + "\">" + (i + 1) + "</button>");
     }
     showImage(0);
+    $('#discuss-link').attr('href', "" + (talkHref(subject)));
     $('#twitter-link').attr('href', "" + (twitterHref(subject)));
     $('#facebook-link').attr('href', "" + (facebookHref(subject)));
     $('#pinterest-link').attr('href', "" + (pinterestHref(subject)));
