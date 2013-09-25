@@ -27,8 +27,28 @@ fetch = (trap) ->
   request
 
 showImage = (index) ->
-  $('#subject-images').children().css 'z-index', ''
-  $('#subject-images').children().eq(index).css 'z-index', 1
+  images = $('#subject-images img')
+  images.css 'z-index', ''
+  images.eq(index).css 'z-index', 1
+
+  buttons = $('#switch-image button[name="select-image"]')
+  buttons.removeClass 'active'
+  buttons.eq(index).addClass 'active'
+
+# Copied from subject_viewer.coffee
+play = ->
+  imageCount = $('#subject-images img').length
+
+  # Flip the images back and forth a couple times.
+  last = imageCount - 1
+  iterator = [0...last].concat [last...0]
+  iterator = iterator.concat [0...last].concat [last...0]
+
+  # End half way through.
+  iterator = iterator.concat [0...Math.floor(imageCount / 2) + 1]
+
+  for index, i in iterator then do (index, i) =>
+    setTimeout (=> showImage index), i * 333
 
 talkHref = (subject) ->
   "http://talk.snapshotserengeti.org/#/subjects/#{subject.subject_id}"
@@ -113,12 +133,14 @@ $ ->
         renderSubject data.rows[currentSubject]
         renderSubjectList data.rows
 
-        $('#subject-list').change ({ currentTarget }) ->
-          currentSubject = parseInt currentTarget.value
-          renderSubject data.rows[currentSubject]
+        $('button[name="play"]').on 'click', play
 
         $('#switch-image').click 'button', ({ target }) ->
           showImage $(target).val()
+
+        $('#subject-list').change ({ currentTarget }) ->
+          currentSubject = parseInt currentTarget.value
+          renderSubject data.rows[currentSubject]
 
         $('#navigation').click 'button', ({ target }) ->
           switch target.name
