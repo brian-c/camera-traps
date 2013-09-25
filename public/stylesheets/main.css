@@ -945,6 +945,17 @@ a {
 .subject-viewer .controls {
   font-size: 12px;
   font-weight: bold;
+  position: relative;
+}
+.subject-viewer .followup {
+  display: inline-block;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.subject-viewer .followup .group a i {
+  top: 0;
 }
 .introduction .controls {
   margin: 3em 0;
