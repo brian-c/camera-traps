@@ -13,6 +13,9 @@ DONORS =
   'O06': 'Hannelore Schmidt'
   'S09': 'Daniela F. Sieff'
 
+modulus = (a, b) ->
+  ((a % b) + b) % b
+
 fetch = (trap) ->
   baseUrl = "https://the-zooniverse.cartodb.com/api/v2/sql?q="
 
@@ -108,13 +111,27 @@ renderSubject = (subject) ->
   $('#pinterest-link').attr 'href', "#{ pinterestHref subject }"
   $('#tumblr-link').attr 'href', "#{ tumblrHref subject }"
 
-renderSubjectList = (subjects) ->
-  for subject, i in subjects
-    $('#subject-list').append "<option value=\"#{ i }\">#{ moment(subject.captured_at).format('MMMM Do YYYY, h:mm:ss a') }</option>"
+groupList = $('#group-list')
+subjectList = $('#subject-list')
 
-updateSubjectList = (i) ->
-  $('#subject-list option:selected').removeAttr 'selected'
-  $("#subject-list option:nth-child(#{ i + 1 })").attr 'selected', 'selected'
+allSubjects = null
+groupedSubjects = {}
+currentSubject = null
+
+selectGroup = (group) ->
+  groupList.val group unless groupList.val() is group
+
+  subjectList.empty()
+  for subject in groupedSubjects[group]
+    subjectList.append "<option value='#{allSubjects.indexOf subject}'>#{moment(subject.captured_at).format 'MMMM Do YYYY h:mm:ss a'}</option>"
+
+selectSubject = (subject) ->
+  currentSubject = subject
+
+  selectGroup group for group, subSubjects of groupedSubjects when subject in subSubjects
+  subjectList.val allSubjects.indexOf subject
+
+  renderSubject subject
 
 $ ->
   if location.hash is ""
@@ -128,33 +145,34 @@ $ ->
     request = fetch cameraTrap
 
     request.done (data) ->
-      if data.rows.length
-        currentSubject = 0
+      allSubjects = data.rows
 
+      for subject in allSubjects
+        yearMonth = moment(subject.captured_at).format 'YYYY-MMMM'
+        groupedSubjects[yearMonth] ?= []
+        groupedSubjects[yearMonth].push subject
+
+      for group, subjects of groupedSubjects
+        groupList.append "<option value='#{group}'>#{moment(group).format 'MMMM YYYY'}</option>"
+
+      groupList.on 'change', -> selectSubject groupedSubjects[groupList.val()][0]
+
+      subjectList.on 'change', -> selectSubject allSubjects[subjectList.val()]
+
+      selectSubject allSubjects[0]
+
+      $('button[name="play"]').on 'click', play
+
+      $('#switch-image').click 'button', ({ target }) ->
+        showImage $(target).val()
+
+      $('#subject-list').change ({ currentTarget }) ->
+        currentSubject = parseInt currentTarget.value
         renderSubject data.rows[currentSubject]
-        renderSubjectList data.rows
 
-        $('button[name="play"]').on 'click', play
-
-        $('#switch-image').click 'button', ({ target }) ->
-          showImage $(target).val()
-
-        $('#subject-list').change ({ currentTarget }) ->
-          currentSubject = parseInt currentTarget.value
-          renderSubject data.rows[currentSubject]
-
-        $('#navigation').click 'button', ({ target }) ->
-          switch target.name
-            when "previous"
-              if currentSubject is 0
-                currentSubject = data.rows.length - 1
-              else
-                currentSubject -= 1
-            when "next"
-              if currentSubject is (data.rows.length - 1)
-                currentSubject = 0
-              else
-                currentSubject += 1
-
-          renderSubject data.rows[currentSubject]
-          updateSubjectList currentSubject
+      $('#navigation').click 'button', ({ target }) ->
+        switch target.name
+          when "previous"
+            selectSubject allSubjects[modulus allSubjects.indexOf(currentSubject) - 1, allSubjects.length]
+          when "next"
+            selectSubject allSubjects[modulus allSubjects.indexOf(currentSubject) + 1, allSubjects.length]
