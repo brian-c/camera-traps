@@ -140,7 +140,7 @@ $ ->
         groupedSubjects[yearMonth].push subject
 
       for group, subjects of groupedSubjects
-        groupList.append "<option value='#{group}'>#{moment(group).format 'MMMM YYYY'}</option>"
+        groupList.append "<option value='#{group}''>#{group.split('-').reverse().join(' ')}</option>"
 
       groupList.on 'change', -> selectSubject groupedSubjects[groupList.val()][0]
 

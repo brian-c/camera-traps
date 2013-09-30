@@ -179,7 +179,7 @@
         }
         for (group in groupedSubjects) {
           subjects = groupedSubjects[group];
-          groupList.append("<option value='" + group + "'>" + (moment(group).format('MMMM YYYY')) + "</option>");
+          groupList.append("<option value='" + group + "''>" + (group.split('-').reverse().join(' ')) + "</option>");
         }
         groupList.on('change', function() {
           return selectSubject(groupedSubjects[groupList.val()][0]);
